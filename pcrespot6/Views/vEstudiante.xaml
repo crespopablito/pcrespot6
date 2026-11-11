@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="pcrespot6.Views.vEstudiante"
+    Title="Estudiantes"
+    BackgroundColor="#F5F7FA">
+
+    <Grid Padding="20"
+          RowDefinitions="Auto,Auto,*"
+          RowSpacing="15">
+
+        <Label
+            Grid.Row="0"
+            Text="Semana 6: Servicios web - Estudiantes"
+            FontSize="22"
+            FontAttributes="Bold"
+            TextColor="#263238"
+            HorizontalOptions="Center"
+            HorizontalTextAlignment="Center"/>
+
+        <Border
+            Grid.Row="1"
+            BackgroundColor="#263D52"
+            StrokeThickness="0"
+            StrokeShape="RoundRectangle 8"
+            Padding="15">
+
+            <Grid ColumnDefinitions="*,*"
+                  ColumnSpacing="10">
+
+                <Label
+                    Grid.Column="0"
+                    Text="NOMBRE"
+                    FontSize="15"
+                    FontAttributes="Bold"
+                    TextColor="White"/>
+
+                <Label
+                    Grid.Column="1"
+                    Text="APELLIDO"
+                    FontSize="15"
+                    FontAttributes="Bold"
+                    TextColor="White"/>
+
+            </Grid>
+        </Border>
+
+        <CollectionView
+            Grid.Row="2"
+            x:Name="listaEstudiante"
+            SelectionMode="None">
+
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+
+                    <Border
+                        BackgroundColor="White"
+                        Stroke="#E0E0E0"
+                        StrokeThickness="1"
+                        StrokeShape="RoundRectangle 5"
+                        Margin="0,2"
+                        Padding="15">
+
+                        <Grid ColumnDefinitions="*,*"
+                              ColumnSpacing="10">
+
+                            <Label
+                                Grid.Column="0"
+                                Text="{Binding nombre}"
+                                FontSize="15"
+                                TextColor="#263238"
+                                VerticalOptions="Center"/>
+
+                            <Label
+                                Grid.Column="1"
+                                Text="{Binding apellido}"
+                                FontSize="15"
+                                TextColor="#607D8B"
+                                VerticalOptions="Center"/>
+
+                        </Grid>
+
+                    </Border>
+
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+
+            <CollectionView.EmptyView>
+                <Label
+                    Text="No hay estudiantes registrados."
+                    TextColor="#607D8B"
+                    HorizontalOptions="Center"
+                    Margin="0,20"/>
+            </CollectionView.EmptyView>
+
+        </CollectionView>
+
+    </Grid>
+</ContentPage>
