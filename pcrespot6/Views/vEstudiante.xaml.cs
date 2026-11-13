@@ -6,7 +6,7 @@ namespace pcrespot6.Views;
 
 public partial class vEstudiante : ContentPage
 {
-    private const string Url = "http://192.168.56.1/ws_estudiante/estudiante_ws.php";
+    private const string Url = "http://192.168.0.174/ws_estudiante/estudiante_ws.php";
 
     private readonly HttpClient _cliente = new HttpClient();
 
@@ -59,6 +59,19 @@ public partial class vEstudiante : ContentPage
                 "No se pudieron cargar los estudiantes: " + ex.Message,
                 "Aceptar"
             );
+        }
+    }
+
+    private async void btnAgregar_Clicked(object? sender, EventArgs e)
+    {
+        await Navigation.PushAsync(new vAgregarEstudiante());
+    }
+
+    private async void OnEstudianteTapped(object? sender, TappedEventArgs e)
+    {
+        if (e.Parameter is Estudiante estudiante)
+        {
+            await Navigation.PushAsync(new vActualizarEliminar(estudiante));
         }
     }
 }
